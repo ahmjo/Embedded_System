@@ -25,7 +25,7 @@ int is_prim(int num){
     else{
         int a=5;
         while (a<=num/2){
-            if (num%a==0 || num%(a+1)==0){
+            if (num%a==0 || num%(a+2)==0){
                 return 0 ;
             }
             a=a+6;
