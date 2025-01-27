@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Drivers/STM32F103C6_drivers/Inc/STM32F103X6.h&apos;" deleteContents="false" description="Delete resource &apos;Drivers/STM32F103C6_drivers/Inc/STM32F103X6.h&apos;" element1="/Drivers/STM32F103C6_drivers/Inc/STM32F103X6.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1737979962500"/>&#x0A;<refactoring comment="Delete resource &apos;Drivers/STM32F103C6_drivers&apos;" deleteContents="false" description="Delete resource &apos;Drivers/STM32F103C6_drivers&apos;" element1="/Drivers/STM32F103C6_drivers" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1737982484335"/>
+</session>

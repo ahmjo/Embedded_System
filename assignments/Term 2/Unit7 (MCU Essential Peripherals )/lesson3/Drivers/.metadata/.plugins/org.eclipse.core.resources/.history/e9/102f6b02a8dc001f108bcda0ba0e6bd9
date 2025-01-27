@@ -1,0 +1,27 @@
+#ifndef INC_STM32F103X6_H_
+#define INC_STM32F103X6_H_
+//Includes
+#include <stdio.h>
+#include <stdint.h>
+
+//---------------------------------------
+//Base addresses for Memories
+
+#define FLASH_Memory_BASE 							0x08000000UL
+#define System_Memory_BASE 							0x1FFFF000UL
+#define SRAM_Memory_BASE 							0x20000000UL
+#define Peripherals_BASE 							0x40000000UL
+#define Cortex_M3_Internal_Peripherals_BASE 		0xE0000000UL
+
+//---------------------------------------
+
+//---------------------------------------
+//Base addresses for AHB Peripherals
+
+#define RCC_BASE       0x40021000UL
+//or we can write it like this (Peripherals_BASE + 0x00021000UL)
+
+//---------------------------------------
+
+
+#endif /* INC_STM32F103X6_H_ */

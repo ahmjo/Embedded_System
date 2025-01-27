@@ -1,0 +1,273 @@
+14:17:08 **** Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g -mcpu=cortex-m3 -g3 -DDEBUG -c -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c6tx.d" -MT"Startup/startup_stm32f103c6tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c6tx.o" "../Startup/startup_stm32f103c6tx.s"
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\courses\embedded system diplom\content\Term 2\Unit7 (MCU Essential Peripherals )\03 lec3\My_Drivers\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Startup/startup_stm32f103c6tx.o: in function `Reset_Handler':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Startup/startup_stm32f103c6tx.s:97: undefined reference to `main'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Drivers.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:39:00 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:55:9: warning: implicit declaration of function 'delay' [-Wimplicit-function-declaration]
+   55 |         delay(1);
+      |         ^~~~~
+arm-none-eabi-gcc -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\courses\embedded system diplom\content\Term 2\Unit7 (MCU Essential Peripherals )\03 lec3\My_Drivers\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `Gpio_Init':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:20: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:26: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:31: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:37: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:48: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:50: undefined reference to `GPIO_TOGGLE_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:51: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:53: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:54: undefined reference to `GPIO_TOGGLE_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:55: undefined reference to `delay'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Drivers.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:39:59 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g -mcpu=cortex-m3 -g3 -DDEBUG -c -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c6tx.d" -MT"Startup/startup_stm32f103c6tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c6tx.o" "../Startup/startup_stm32f103c6tx.s"
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+../Src/main.c: In function 'main':
+../Src/main.c:55:9: warning: implicit declaration of function 'delay' [-Wimplicit-function-declaration]
+   55 |         delay(1);
+      |         ^~~~~
+arm-none-eabi-gcc -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\courses\embedded system diplom\content\Term 2\Unit7 (MCU Essential Peripherals )\03 lec3\My_Drivers\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `Gpio_Init':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:20: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:26: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:31: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:37: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:48: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:50: undefined reference to `GPIO_TOGGLE_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:51: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:53: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:54: undefined reference to `GPIO_TOGGLE_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:55: undefined reference to `delay'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Drivers.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:40:01 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\courses\embedded system diplom\content\Term 2\Unit7 (MCU Essential Peripherals )\03 lec3\My_Drivers\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `Gpio_Init':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:20: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:26: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:31: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:37: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:48: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:50: undefined reference to `GPIO_TOGGLE_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:51: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:53: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:54: undefined reference to `GPIO_TOGGLE_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:55: undefined reference to `delay'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Drivers.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:41:16 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:55:9: warning: implicit declaration of function 'delay' [-Wimplicit-function-declaration]
+   55 |         delay(1);
+      |         ^~~~~
+arm-none-eabi-gcc -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\courses\embedded system diplom\content\Term 2\Unit7 (MCU Essential Peripherals )\03 lec3\My_Drivers\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:55: undefined reference to `delay'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Drivers.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:41:45 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'delay':
+../Src/main.c:49:5: warning: 'main' is normally a non-static function [-Wmain]
+   49 | int main(void)
+      |     ^~~~
+../Src/main.c:65:1: error: expected declaration or statement at end of input
+   65 | }
+      | ^
+../Src/main.c: At top level:
+../Src/main.c:49:5: warning: 'main' defined but not used [-Wunused-function]
+   49 | int main(void)
+      |     ^~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:42:03 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'delay':
+../Src/main.c:49:5: warning: 'main' is normally a non-static function [-Wmain]
+   49 | int main(void)
+      |     ^~~~
+../Src/main.c:66:1: error: expected declaration or statement at end of input
+   66 | }
+      | ^
+../Src/main.c: At top level:
+../Src/main.c:49:5: warning: 'main' defined but not used [-Wunused-function]
+   49 | int main(void)
+      |     ^~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:43:51 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c:3:10: fatal error: STM32F103C6_GPIO_drivers.: No such file or directory
+    3 | #include "STM32F103C6_GPIO_drivers."
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:43:57 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'delay':
+../Src/main.c:49:5: warning: 'main' is normally a non-static function [-Wmain]
+   49 | int main(void)
+      |     ^~~~
+../Src/main.c:66:1: error: expected declaration or statement at end of input
+   66 | }
+      | ^
+../Src/main.c: At top level:
+../Src/main.c:49:5: warning: 'main' defined but not used [-Wunused-function]
+   49 | int main(void)
+      |     ^~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:45:08 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\courses\embedded system diplom\content\Term 2\Unit7 (MCU Essential Peripherals )\03 lec3\My_Drivers\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `Gpio_Init':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:19: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:25: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:30: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:36: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:57: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:59: undefined reference to `GPIO_TOGGLE_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:61: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:65: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:67: undefined reference to `GPIO_TOGGLE_Pin'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Drivers.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:45:40 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g -mcpu=cortex-m3 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c6tx.d" -MT"Startup/startup_stm32f103c6tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c6tx.o" "../Startup/startup_stm32f103c6tx.s"
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'delay':
+../Src/main.c:49:5: warning: 'main' is normally a non-static function [-Wmain]
+   49 | int main(void)
+      |     ^~~~
+../Src/main.c:66:1: error: expected declaration or statement at end of input
+   66 | }
+      | ^
+../Src/main.c: At top level:
+../Src/main.c:49:5: warning: 'main' defined but not used [-Wunused-function]
+   49 | int main(void)
+      |     ^~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:46:36 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'delay':
+../Src/main.c:49:5: warning: 'main' is normally a non-static function [-Wmain]
+   49 | int main(void)
+      |     ^~~~
+../Src/main.c:70:1: error: expected declaration or statement at end of input
+   70 | }
+      | ^
+../Src/main.c: At top level:
+../Src/main.c:49:5: warning: 'main' defined but not used [-Wunused-function]
+   49 | int main(void)
+      |     ^~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:46:40 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'delay':
+../Src/main.c:49:5: warning: 'main' is normally a non-static function [-Wmain]
+   49 | int main(void)
+      |     ^~~~
+../Src/main.c:69:1: error: expected declaration or statement at end of input
+   69 | }
+      | ^
+../Src/main.c: At top level:
+../Src/main.c:49:5: warning: 'main' defined but not used [-Wunused-function]
+   49 | int main(void)
+      |     ^~~~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:50:48 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\courses\embedded system diplom\content\Term 2\Unit7 (MCU Essential Peripherals )\03 lec3\My_Drivers\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `Gpio_Init':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:20: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:26: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:31: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:37: undefined reference to `GPIO_Init'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Src/main.o: in function `main':
+F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:57: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:59: undefined reference to `GPIO_TOGGLE_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:60: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:62: undefined reference to `GPIO_READ_Pin'
+C:/ST/STM32CubeIDE_1.4.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld.exe: F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/Debug/../Src/main.c:64: undefined reference to `GPIO_TOGGLE_Pin'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:63: Drivers.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+14:58:40 **** Clean-only build of configuration Debug for project Drivers ****
+make -j8 clean 
+rm -rf ./Startup/startup_stm32f103c6tx.d ./Startup/startup_stm32f103c6tx.o
+rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf Drivers.elf Drivers.list Drivers.map default.size.stdout
+ 
+14:58:40 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g -mcpu=cortex-m3 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c6tx.d" -MT"Startup/startup_stm32f103c6tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c6tx.o" "../Startup/startup_stm32f103c6tx.s"
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -gdwarf-2 -g "../STM32F103C6_drivers/STM32F103C6_GPIO_drivers.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"STM32F103C6_drivers/STM32F103C6_GPIO_drivers.d" -MT"STM32F103C6_drivers/STM32F103C6_GPIO_drivers.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "STM32F103C6_drivers/STM32F103C6_GPIO_drivers.o"
+arm-none-eabi-gcc -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\courses\embedded system diplom\content\Term 2\Unit7 (MCU Essential Peripherals )\03 lec3\My_Drivers\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drivers.elf
+ 
+arm-none-eabi-size  Drivers.elf 
+arm-none-eabi-objdump -h -S Drivers.elf  > "Drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1516	      0	   1568	   3084	    c0c	Drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drivers.list
+ 
+16:07:58 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 -g "../STM32F103C6_drivers/STM32F103C6_GPIO_drivers.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"STM32F103C6_drivers/STM32F103C6_GPIO_drivers.d" -MT"STM32F103C6_drivers/STM32F103C6_GPIO_drivers.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "STM32F103C6_drivers/STM32F103C6_GPIO_drivers.o"
+arm-none-eabi-gcc -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\courses\embedded system diplom\content\Term 2\Unit7 (MCU Essential Peripherals )\03 lec3\My_Drivers\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drivers.elf
+ 
+arm-none-eabi-size  Drivers.elf 
+arm-none-eabi-objdump -h -S Drivers.elf  > "Drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1516	      0	   1568	   3084	    c0c	Drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drivers.list
+ 

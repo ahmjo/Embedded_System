@@ -1,0 +1,268 @@
+#include "STM32F103C6_GPIO_drivers.h"
+
+uint8_t Get_PinPostion(uint16_t PinNumber)
+{
+	switch(PinNumber)
+	{
+		case GPIO_PIN_0:
+		case GPIO_PIN_8:
+			return 0;
+		break;
+
+		case GPIO_PIN_1:
+		case GPIO_PIN_9:
+			return 4;
+		break;
+
+		case GPIO_PIN_2:
+		case GPIO_PIN_10:
+			return 8;
+		break;
+
+		case GPIO_PIN_3:
+		case GPIO_PIN_11:
+			return 12;
+		break;
+
+		case GPIO_PIN_4:
+		case GPIO_PIN_12:
+			return 16;
+		break;
+
+		case GPIO_PIN_5:
+		case GPIO_PIN_13:
+			return 20;
+		break;
+
+		case GPIO_PIN_6:
+		case GPIO_PIN_14:
+			return 24;
+		break;
+
+		case GPIO_PIN_7:
+		case GPIO_PIN_15:
+			return 28;
+		break;
+	}
+	return 0;
+}
+
+
+/**================================================================
+ * @Fn			-GPIO_Init
+ * @brief 		-Initializes the GPIOx PINy according to the specified parameters in the PIN_Config
+ * @param [in] 	-GPIOx: where x can be (A..E depending on device used) to select the GPIO Instant
+ * @param [in] 	-PIN_Config: a pointer to GPIO_PIN_Configuration_t structure that contains
+ * 							 the configuration information for the specified GPIO PIN
+ * @retval 		-none
+ * Note			-none
+================================================================**/
+void GPIO_Init(GPIO_t *GPIOx,GPIO_Config_t *pin_config)
+{
+	// Port configuration register high (GPIOx_CRH) configure PINs from 0 >> 7
+	// Port configuration register high (GPIOx_CRH) configure PINs from 8 >> 15
+	volatile uint32_t *confg_reg = NULL;
+	uint8_t PinConfig = 0;
+	//see if it's CRL or CRH
+	confg_reg = (pin_config->GPIO_PinNumber < GPIO_PIN_8)? &GPIOx->CRL: &GPIOx->CRH ;
+	//Reset CNF and MODE
+	*confg_reg &= ~(0xf<<Get_PinPostion(pin_config->GPIO_PinNumber));//* because we will write value
+
+	//if it's output
+	if((pin_config->GPIO_PinMode == GPIO_MODE_OUTPUT_PP)||(pin_config->GPIO_PinMode == GPIO_MODE_OUTPUT_OD)||(pin_config->GPIO_PinMode == GPIO_MODE_OUTPUT_AF_PP)||(pin_config->GPIO_PinMode == GPIO_MODE_OUTPUT_AF_OD))
+	{
+		/*
+		 * 00: General purpose output push-pull
+		 * 01: General purpose output Open-drain
+		 * 10: Alternate function output Push-pull
+		 * 11: Alternate function output Open-drain
+		 */
+		PinConfig = ((((pin_config->GPIO_PinMode - 4) <<2)|(pin_config->GPIO_PinSpeed))&0xf);
+	}
+	else//if it's input
+	{
+		/*
+		 * 00: Analog mode
+		 * 01: Floating input
+		 * 01: Alternative input
+		 * 11: Input with PU or PD
+		 * //the diff between PU & PD :=> PU: ODR --> 1  PD: ODR --> 0
+		 */
+		if((pin_config->GPIO_PinMode == GPIO_MODE_ANALOG)||(pin_config->GPIO_PinMode == GPIO_MODE_INPUT_FLO))
+		{
+			PinConfig = (((pin_config->GPIO_PinMode << 2))&0xf);
+		}
+		else if(pin_config->GPIO_PinMode == GPIO_MODE_INPUT_AF)
+		{
+			PinConfig = (((GPIO_MODE_INPUT_FLO << 2))&0xf);
+		}
+		else
+		{
+			PinConfig = (((GPIO_MODE_INPUT_PU << 2))&0xf);
+			if(pin_config->GPIO_PinMode == GPIO_MODE_INPUT_PU)
+				GPIOx->ODR |= pin_config->GPIO_PinNumber;
+			else
+				GPIOx->ODR &= ~pin_config->GPIO_PinNumber;
+		}
+	}
+	*confg_reg |= (PinConfig<<Get_PinPostion(pin_config->GPIO_PinNumber));
+}
+
+
+/**================================================================
+ * @Fn			-GPIO_DeInit
+ * @brief 		-Reset All the GPIO Registers.
+ * @param [in] 	-GPIOx: where x can be (A..E depending on device used) to select the GPIO Instant
+ * @retval 		-none
+ * Note			-none
+================================================================**/
+void GPIO_DeInit(GPIO_t *GPIOx,GPIO_Config_t *pin_config)
+{
+	/*
+	 * If MCU Dosen't Have Reset Controller:
+	 * 		>> use the reset value of each register to reset the peripheral
+	 * GPIOx->CRL =  0x44444444;
+	 * GPIOx->CRH =  0x44444444;
+	 * GPIOx->IDR; (Read Only)
+	 * GPIOx->ODR  =  0x00000000;
+	 * GPIOx->BSRR =  0x00000000;
+	 * GPIOx->BRR =   0x00000000;
+	 * GPIOx->LCKR =  0x00000000;
+	 */
+
+	/*
+	 * APB2 peripheral reset register (RCC_APB2RSTR)
+	 * 0: No effect
+	 * 1: Reset IO port x
+	 */
+	if(GPIOx == GPIOA)
+	{
+		RCC->APB2RSTR |=  (1 << 2);
+		RCC->APB2RSTR &= ~(1 << 2);
+	}
+	else if(GPIOx == GPIOB)
+	{
+		RCC->APB2RSTR |=  (1 << 3);
+		RCC->APB2RSTR &= ~(1 << 3);
+	}
+	else if(GPIOx == GPIOC)
+	{
+		RCC->APB2RSTR |=  (1 << 4);
+		RCC->APB2RSTR &= ~(1 << 4);
+	}
+	else if(GPIOx == GPIOD)
+	{
+		RCC->APB2RSTR |=  (1 << 5);
+		RCC->APB2RSTR &= ~(1 << 5);
+	}
+}
+
+
+/**================================================================
+ * @Fn			-GPIO_READ_Pin
+ * @brief 		-Read Specific PIN.
+ * @param [in] 	-GPIOx: where x can be (A..E depending on device used) to select the GPIO Instant.
+ * @param [in] 	-PinNumber: Set PIN number according to @ref GPIO_PIN_DEFINE.
+ * @retval 		-the I/P PIN Value (Two Values based on @ref GPIO_PIN_STATE >> SET or RESET)
+ * Note			-none
+================================================================**/
+uint8_t GPIO_READ_Pin(GPIO_t *GPIOx,uint16_t pinnumber)
+{
+	if((GPIOx->IDR & pinnumber)!= GPIO_PIN_RESET)
+		return GPIO_PIN_SET;
+	else
+		return GPIO_PIN_RESET;
+}
+
+
+/**================================================================
+ * @Fn			GPIO_READ_Port
+ * @brief 		-Read Specific PORT.
+ * @param [in] 	-GPIOx: where x can be (A..E depending on device used) to select the GPIO Instant.
+ * @retval 		-the I/P PORT Value
+ * Note			-none
+================================================================**/
+uint16_t GPIO_READ_Port(GPIO_t *GPIOx)
+{
+	return (uint16_t)GPIOx->IDR;
+}
+
+
+/**================================================================
+ * @Fn			-GPIO_WRITE_Pin
+ * @brief 		-Write a value on Specific PIN.
+ * @param [in] 	-GPIOx: where x can be (A..E depending on device used) to select the GPIO Instant.
+ * @param [in] 	-PinNumber: Set PIN number according to @ref GPIO_PIN_DEFINE.
+ * @param [in] 	-Value: The value that will write in PIN (Two Values based on @ref GPIO_PIN_STATE >> SET or RESET).
+ * @retval 		-none
+ * Note			-none
+================================================================**/
+void GPIO_WRITE_Pin(GPIO_t *GPIOx,uint16_t pinnumber,uint8_t value)
+{
+	//we may write on ODR or on BSRR and BRR
+
+	if(value != GPIO_PIN_RESET)
+	{
+		//GPIOx->ODR |= pinnumber;
+		GPIOx->BSRR = (uint32_t)pinnumber;
+	}
+	else
+		GPIOx->BRR = (uint32_t)pinnumber;
+}
+
+
+/**================================================================
+ * @Fn			-GPIO_WRITE_Port
+ * @brief 		-Write a value on Specific PORT.
+ * @param [in] 	-GPIOx: where x can be (A..E depending on device used) to select the GPIO Instant.
+ * @param [in] 	-Value: The value that will write in PORT
+ * @retval 		-none
+ * Note			-none
+================================================================**/
+void GPIO_WRITE_Port(GPIO_t *GPIOx,uint8_t value)
+{
+	GPIOx->ODR |= (uint32_t)value;
+}
+
+
+/**================================================================
+ * @Fn			-GPIO_TOGGLE_Pin
+ * @brief 		-Toggle Specific PIN.
+ * @param [in] 	-GPIOx: where x can be (A..E depending on device used) to select the GPIO Instant.
+ * @param [in] 	-PinNumber: Set PIN number according to @ref GPIO_PIN_DEFINE.
+ * @retval 		-none
+ * Note			-none
+================================================================**/
+void GPIO_TOGGLE_Pin(GPIO_t *GPIOx,uint16_t pinnumber)
+{
+	GPIOx->ODR ^=(uint32_t)pinnumber;
+}
+
+
+/**================================================================
+ * @Fn			-MCAL_GPIO_LockPin
+ * @brief 		-The locking mechanism allows the IO configuration to be frozen.
+ * @param [in] 	-GPIOx: where x can be (A..E depending on device used) to select the GPIO Instant.
+ * @param [in] 	-PinNumber: Set PIN number according to @ref GPIO_PINs_define.
+ * @retval 		-it returns lock state according to @ref GPIO_LOCK_state (OK if pin config is locked else ERROR)
+ * Note			-none
+================================================================**/
+uint8_t GPIO_LOCK_Pin(GPIO_t *GPIOx,uint16_t pinnumber)
+{
+	volatile uint32_t tmp = 1<<16;
+	tmp |= pinnumber;
+	//write 1
+	GPIOx->LCKR = tmp;
+	//write 0
+	GPIOx->LCKR = pinnumber;
+	//write 1
+	GPIOx->LCKR = tmp;
+	//read
+	tmp = GPIOx->LCKR;
+	if(((GPIOx->LCKR) & (1<<16))!=0)
+		return GPIO_LOCK_OK;
+	else
+		return GPIO_LOCK_ERROR;
+}
+
+

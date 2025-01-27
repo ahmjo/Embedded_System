@@ -1,0 +1,18 @@
+16:07:58 **** Incremental Build of configuration Debug for project Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -gdwarf-2 -g "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -gdwarf-2 -g "../STM32F103C6_drivers/STM32F103C6_GPIO_drivers.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers" -I"F:/courses/embedded system diplom/content/Term 2/Unit7 (MCU Essential Peripherals )/03 lec3/My_Drivers/Drivers/STM32F103C6_drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"STM32F103C6_drivers/STM32F103C6_GPIO_drivers.d" -MT"STM32F103C6_drivers/STM32F103C6_GPIO_drivers.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "STM32F103C6_drivers/STM32F103C6_GPIO_drivers.o"
+arm-none-eabi-gcc -o "Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\courses\embedded system diplom\content\Term 2\Unit7 (MCU Essential Peripherals )\03 lec3\My_Drivers\Drivers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Drivers.elf
+ 
+arm-none-eabi-size  Drivers.elf 
+arm-none-eabi-objdump -h -S Drivers.elf  > "Drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1516	      0	   1568	   3084	    c0c	Drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: Drivers.list
+ 
+
+16:07:58 Build Finished. 0 errors, 0 warnings. (took 592ms)
+
