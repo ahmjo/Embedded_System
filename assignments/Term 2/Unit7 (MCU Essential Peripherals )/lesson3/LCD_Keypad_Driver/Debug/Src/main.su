@@ -1,0 +1,4 @@
+../Src/main.c:19:6:clock_init	4	static
+../Src/main.c:27:6:GPIO_init	16	static
+../Src/main.c:68:6:Wait	24	static
+../Src/main.c:76:5:main	40	static
