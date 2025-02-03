@@ -1,10 +1,3 @@
-/*
- * STM32F103X6.h
- *
- *  Created on: Jan 27, 2025
- *      Author: AAMA
- */
-
 #ifndef INC_STM32F103X6_H_
 #define INC_STM32F103X6_H_
 
