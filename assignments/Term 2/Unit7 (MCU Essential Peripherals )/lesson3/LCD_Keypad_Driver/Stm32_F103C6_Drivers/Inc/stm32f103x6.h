@@ -1,10 +1,3 @@
-/*
- * stm32f103x6.h
- *
- *  Created on: Apr 28, 2021
- *      Author: kkhalil
- */
-
 #ifndef INC_STM32F103X6_H_
 #define INC_STM32F103X6_H_
 
