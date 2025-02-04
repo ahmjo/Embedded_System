@@ -1,10 +1,3 @@
-/*
- * Stm32_F103C6_gpio_driver.c
- *
- *  Created on: Apr 28, 2021
- *      Author: Keroles Shenouda
- */
-
 #include "Stm32_F103C6_gpio_driver.h"
 
 
