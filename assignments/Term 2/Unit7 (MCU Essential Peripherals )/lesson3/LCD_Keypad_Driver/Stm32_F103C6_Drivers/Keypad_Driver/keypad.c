@@ -11,26 +11,26 @@ void delay_mss(uint32_t time) {
 
 // Initialize Keypad
 void Keypad_init() {
-    GPIO_PinConfig_t PinCfg;
+    GPIO_Config_t PinCfg;
 
     // Configure Rows (R0 - R3) Output
     for (int i = 0; i < 4; i++) {
         PinCfg.GPIO_PinNumber = Key_padRow[i];
-        PinCfg.GPIO_MODE = GPIO_MODE_OUTPUT_PP;
-        PinCfg.GPIO_Output_Speed = GPIO_SPEED_10M;
+        PinCfg.GPIO_PinMode = GPIO_MODE_OUTPUT_PP;
+        PinCfg.GPIO_PinSpeed = GPIO_SPEED_10MHz;
         MCAL_GPIO_Init(KEYPAD_PORT, &PinCfg);
     }
 
     // Configure Columns (C0 - C3) Input Pull-up
     for (int i = 0; i < 4; i++) {
         PinCfg.GPIO_PinNumber = Key_padCol[i];
-        PinCfg.GPIO_MODE = GPIO_MODE_INPUT_PU;
+        PinCfg.GPIO_PinMode = GPIO_MODE_INPUT_PU;
         MCAL_GPIO_Init(KEYPAD_PORT, &PinCfg);
     }
 
     // Set all rows HIGH initially
     for (int i = 0; i < 4; i++) {
-        MCAL_GPIO_WritePin(KEYPAD_PORT, Key_padRow[i], GPIO_PIN_SET);
+        MCAL_GPIO_WRITE_Pin(KEYPAD_PORT, Key_padRow[i], GPIO_PIN_SET);
     }
 }
 
@@ -40,19 +40,19 @@ char Keypad_getkey() {
     for (row = 0; row < 4; row++) {
         // Set all rows HIGH
         for (int i = 0; i < 4; i++) {
-            MCAL_GPIO_WritePin(KEYPAD_PORT, Key_padRow[i], GPIO_PIN_SET);
+        	MCAL_GPIO_WRITE_Pin(KEYPAD_PORT, Key_padRow[i], GPIO_PIN_SET);
         }
 
         // Set the current row LOW
-        MCAL_GPIO_WritePin(KEYPAD_PORT, Key_padRow[row], GPIO_PIN_RESET);
+        MCAL_GPIO_WRITE_Pin(KEYPAD_PORT, Key_padRow[row], GPIO_PIN_RESET);
 
         // Check which column is LOW (button pressed)
         for (col = 0; col < 4; col++) {
-            if (MCAL_GPIO_ReadPin(KEYPAD_PORT, Key_padCol[col]) == GPIO_PIN_RESET) {
+            if (MCAL_GPIO_READ_Pin(KEYPAD_PORT, Key_padCol[col]) == GPIO_PIN_RESET) {
                 delay_mss(20);
 
                 // Wait for key release
-                while (MCAL_GPIO_ReadPin(KEYPAD_PORT, Key_padCol[col]) == GPIO_PIN_RESET);
+                while (MCAL_GPIO_READ_Pin(KEYPAD_PORT, Key_padCol[col]) == GPIO_PIN_RESET);
 
                 char keypad_map[4][4] = {
                     {'7', '8', '9', '/'},

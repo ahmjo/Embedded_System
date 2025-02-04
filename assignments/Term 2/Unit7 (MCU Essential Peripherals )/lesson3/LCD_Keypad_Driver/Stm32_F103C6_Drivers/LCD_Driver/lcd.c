@@ -7,12 +7,12 @@ void delay_ms(uint32_t time) {
 
 // Initialize GPIO for LCD
 void LCD_GPIO_init() {
-    GPIO_PinConfig_t PinCfg;
+	GPIO_Config_t PinCfg;
 
     // Configure RS, RW, and EN as output
     PinCfg.GPIO_PinNumber = RS_SWITCH;
-    PinCfg.GPIO_MODE = GPIO_MODE_OUTPUT_PP;
-    PinCfg.GPIO_Output_Speed = GPIO_SPEED_10M;
+    PinCfg.GPIO_PinMode = GPIO_MODE_OUTPUT_PP;
+    PinCfg.GPIO_PinSpeed = GPIO_SPEED_10MHz;
     MCAL_GPIO_Init(LCD_CTRL, &PinCfg);
 
     PinCfg.GPIO_PinNumber = RW_SWITCH;
@@ -28,16 +28,16 @@ void LCD_GPIO_init() {
     }
 
     // Set initial state: Disable all control signals
-    MCAL_GPIO_WritePin(LCD_CTRL, EN_SWITCH, GPIO_PIN_RESET);
-    MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_RESET);
-    MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
+    MCAL_GPIO_WRITE_Pin(LCD_CTRL, EN_SWITCH, GPIO_PIN_RESET);
+    MCAL_GPIO_WRITE_Pin(LCD_CTRL, RS_SWITCH, GPIO_PIN_RESET);
+    MCAL_GPIO_WRITE_Pin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
 }
 
 
 void LCD_lcd_kick() {
-    MCAL_GPIO_WritePin(LCD_CTRL, EN_SWITCH, GPIO_PIN_SET);
+	MCAL_GPIO_WRITE_Pin(LCD_CTRL, EN_SWITCH, GPIO_PIN_SET);
     delay_ms(2);
-    MCAL_GPIO_WritePin(LCD_CTRL, EN_SWITCH, GPIO_PIN_RESET);
+    MCAL_GPIO_WRITE_Pin(LCD_CTRL, EN_SWITCH, GPIO_PIN_RESET);
 }
 
 
@@ -62,18 +62,18 @@ void LCD_clear_screen() {
 
 // Send a command to LCD
 void LCD_WRITE_COMMAND(unsigned char command) {
-    MCAL_GPIO_WritePort(LCD_CTRL, command);
-    MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_RESET);
-    MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
+    MCAL_GPIO_WRITE_Port(LCD_CTRL, command);
+    MCAL_GPIO_WRITE_Pin(LCD_CTRL, RS_SWITCH, GPIO_PIN_RESET);
+    MCAL_GPIO_WRITE_Pin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
     LCD_lcd_kick();
 }
 
 
 // Write a single character to LCD
 void LCD_WRITE_CHAR(unsigned char character) {
-    MCAL_GPIO_WritePort(LCD_CTRL, character);
-    MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_SET);
-    MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
+	MCAL_GPIO_WRITE_Port(LCD_CTRL, character);
+	MCAL_GPIO_WRITE_Pin(LCD_CTRL, RS_SWITCH, GPIO_PIN_SET);
+	MCAL_GPIO_WRITE_Pin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
     LCD_lcd_kick();
 }
 
