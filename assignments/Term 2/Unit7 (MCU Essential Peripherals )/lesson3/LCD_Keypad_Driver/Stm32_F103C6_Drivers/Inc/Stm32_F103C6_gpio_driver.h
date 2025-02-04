@@ -1,10 +1,3 @@
-/*
- * Stm32_F103C6_gpio_driver.h
- *
- *  Created on: Apr 28, 2021
- *      Author: kkhalil
- */
-
 #ifndef INC_STM32_F103C6_GPIO_DRIVER_H_
 #define INC_STM32_F103C6_GPIO_DRIVER_H_
 
