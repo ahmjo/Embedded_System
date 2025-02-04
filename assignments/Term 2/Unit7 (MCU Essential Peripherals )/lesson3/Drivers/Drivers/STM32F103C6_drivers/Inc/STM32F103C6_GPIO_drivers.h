@@ -1,10 +1,3 @@
-/*
- * STM32F103C6_GPIO_drivers.h
- *
- *  Created on: Jan 27, 2025
- *      Author: AAMA
- */
-
 #ifndef INC_STM32F103C6_GPIO_DRIVERS_H_
 #define INC_STM32F103C6_GPIO_DRIVERS_H_
 
