@@ -1,0 +1,2 @@
+../Src/main.c:12:6:UART_IRQ_CallBack	8	static
+../Src/main.c:18:5:main	24	static
