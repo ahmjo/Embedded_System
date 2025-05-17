@@ -93,12 +93,12 @@ void MCAL_UART_DeInit(USART_t* USARTx)
 		RCC_USART1_Reset();
 		NVIC_IRQ37_USART1_Disable;
 	}
-	else if(USARTx == USART1)
+	else if(USARTx == USART2)
 	{
 		RCC_USART1_Reset();
 		NVIC_IRQ37_USART1_Disable;
 	}
-	else if(USARTx == USART1)
+	else if(USARTx == USART3)
 	{
 		RCC_USART1_Reset();
 		NVIC_IRQ37_USART1_Disable;
