@@ -1,0 +1,214 @@
+!SESSION 2025-06-09 13:57:06.924 -----------------------------------------------
+eclipse.buildId=Version 1.18.1
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-06-09 13:58:19.899
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-06-09 13:58:19.900
+!MESSAGE Log4j2 initialized with config file F:\courses\embedded system diplom\content\Term 2\Unit8 (MCU Interfacing)\05 lec5\SPI_STM32\LAB1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-06-09 13:58:45.713
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-06-09 14:01:34.739
+!MESSAGE Indexed 'LAB1' (3 sources, 53 headers) in 1.83 sec: 1,954 declarations; 2,862 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.042%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-06-09 14:06:37.735
+!MESSAGE Indexed 'LAB1' (8 sources, 59 headers) in 0.401 sec: 2,210 declarations; 4,236 references; 8 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.031%)
+!SESSION 2025-06-11 14:37:31.935 -----------------------------------------------
+eclipse.buildId=Version 1.18.1
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-06-11 14:37:42.063
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-06-11 14:37:42.064
+!MESSAGE Log4j2 initialized with config file F:\courses\embedded system diplom\content\Term 2\Unit8 (MCU Interfacing)\05 lec5\SPI_STM32\LAB1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-06-11 14:38:04.885
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-06-17 17:07:50.278 -----------------------------------------------
+eclipse.buildId=Version 1.18.1
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-06-17 17:08:11.541
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-06-17 17:08:11.542
+!MESSAGE Log4j2 initialized with config file F:\courses\embedded system diplom\content\Term 2\Unit8 (MCU Interfacing)\05 lec5\SPI_STM32\LAB1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-06-17 17:08:35.916
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-06-18 12:03:06.197 -----------------------------------------------
+eclipse.buildId=Version 1.18.1
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-06-18 12:03:13.980
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-06-18 12:03:13.981
+!MESSAGE Log4j2 initialized with config file F:\courses\embedded system diplom\content\Term 2\Unit8 (MCU Interfacing)\05 lec5\SPI_STM32\LAB1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-06-18 12:03:37.582
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-06-24 11:43:24.881 -----------------------------------------------
+eclipse.buildId=Version 1.18.1
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-06-24 11:43:38.162
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-06-24 11:43:38.162
+!MESSAGE Log4j2 initialized with config file F:\courses\embedded system diplom\content\Term 2\Unit8 (MCU Interfacing)\05 lec5\SPI_STM32\LAB1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-06-24 11:44:01.029
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.ui 4 0 2025-06-24 21:31:25.447
+!MESSAGE Error in CDT UI during reconcile
+!STACK 1
+C Model Exception: C Model Status [Element Stm32_F103C6_SPI_driver.c does not exist.]
+	at org.eclipse.cdt.internal.core.model.CElement.newNotPresentException(CElement.java:485)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.makeConsistent(TranslationUnit.java:583)
+	at org.eclipse.cdt.internal.core.model.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:65)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(CModelOperation.java:346)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(CModelOperation.java:613)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(CModelOperation.java:641)
+	at org.eclipse.cdt.internal.core.model.WorkingCopy.reconcile(WorkingCopy.java:365)
+	at org.eclipse.cdt.internal.ui.text.CReconcilingStrategy.reconcile(CReconcilingStrategy.java:79)
+	at org.eclipse.cdt.internal.ui.text.CReconcilingStrategy.reconcile(CReconcilingStrategy.java:64)
+	at org.eclipse.cdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.cdt.internal.ui.text.CCompositeReconcilingStrategy.reconcile(CCompositeReconcilingStrategy.java:90)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.cdt.internal.ui.text.CReconciler.process(CReconciler.java:346)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+!SUBENTRY 1 org.eclipse.cdt.core 4 969 2025-06-24 21:31:25.448
+!MESSAGE Element Stm32_F103C6_SPI_driver.c does not exist.
+!SESSION 2025-07-01 19:49:13.492 -----------------------------------------------
+eclipse.buildId=Version 1.18.1
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-07-01 19:49:24.379
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-07-01 19:49:24.381
+!MESSAGE Log4j2 initialized with config file F:\courses\embedded system diplom\content\Term 2\Unit8 (MCU Interfacing)\05 lec5\SPI_STM32\LAB1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-07-01 19:49:49.077
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-07-02 14:53:25.649 -----------------------------------------------
+eclipse.buildId=Version 1.18.1
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-07-02 14:53:34.304
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-07-02 14:53:34.305
+!MESSAGE Log4j2 initialized with config file F:\courses\embedded system diplom\content\Term 2\Unit8 (MCU Interfacing)\05 lec5\SPI_STM32\LAB1\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-07-02 14:53:42.542
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.ui 4 4 2025-07-02 17:48:16.881
+!MESSAGE Error
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.cdt.core.dom.ast.IASTDeclarator.getName()" because the return value of "org.eclipse.cdt.internal.core.dom.parser.ASTQueries.findInnermostDeclarator(org.eclipse.cdt.core.dom.ast.IASTDeclarator)" is null
+	at org.eclipse.cdt.internal.core.dom.parser.c.CFunction.getParameters(CFunction.java:135)
+	at org.eclipse.cdt.internal.ui.text.contentassist.DOMCompletionProposalComputer.handleFunction(DOMCompletionProposalComputer.java:602)
+	at org.eclipse.cdt.internal.ui.text.contentassist.DOMCompletionProposalComputer.handleBinding(DOMCompletionProposalComputer.java:369)
+	at org.eclipse.cdt.internal.ui.text.contentassist.DOMCompletionProposalComputer.computeCompletionProposals(DOMCompletionProposalComputer.java:192)
+	at org.eclipse.cdt.internal.ui.text.contentassist.ParsingBasedProposalComputer.computeCompletionProposals(ParsingBasedProposalComputer.java:56)
+	at org.eclipse.cdt.internal.ui.text.contentassist.CompletionProposalComputerDescriptor.computeCompletionProposals(CompletionProposalComputerDescriptor.java:299)
+	at org.eclipse.cdt.internal.ui.text.contentassist.CompletionProposalCategory.computeCompletionProposals(CompletionProposalCategory.java:266)
+	at org.eclipse.cdt.internal.ui.text.contentassist.ContentAssistProcessor.collectProposals(ContentAssistProcessor.java:263)
+	at org.eclipse.cdt.internal.ui.text.contentassist.ContentAssistProcessor.computeCompletionProposals(ContentAssistProcessor.java:215)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$2.lambda$0(ContentAssistant.java:2064)
+	at java.base/java.util.Collections$SingletonSet.forEach(Collections.java:5125)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$2.run(ContentAssistant.java:2063)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:2060)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:577)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.lambda$3(CompletionProposalPopup.java:1657)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:67)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.incrementalComplete(CompletionProposalPopup.java:1652)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.showPossibleCompletions(ContentAssistant.java:1873)
+	at org.eclipse.cdt.internal.ui.editor.CEditor$AdaptedSourceViewer.doOperation(CEditor.java:339)
+	at org.eclipse.ui.texteditor.ContentAssistAction.lambda$0(ContentAssistAction.java:85)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:67)
+	at org.eclipse.ui.texteditor.ContentAssistAction.run(ContentAssistAction.java:84)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:474)
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:124)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:98)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:299)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:233)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:174)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:165)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:485)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:204)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:308)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:569)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:644)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.filterKeySequenceBindings(KeyBindingDispatcher.java:439)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher$KeyDownFilter.handleEvent(KeyBindingDispatcher.java:96)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:91)
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1319)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1173)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1198)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1183)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1225)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1221)
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1704)
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4849)
+	at org.eclipse.swt.widgets.Canvas.WM_CHAR(Canvas.java:347)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4727)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:342)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5091)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProc(Native Method)
+	at org.eclipse.swt.internal.BidiUtil.windowProc(BidiUtil.java:650)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3710)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)

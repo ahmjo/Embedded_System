@@ -1,0 +1,9 @@
+../Stm32_F103C6_Drivers/lcd.c:3:6:delay_ms	3
+../Stm32_F103C6_Drivers/lcd.c:11:6:LCD_GPIO_init	2
+../Stm32_F103C6_Drivers/lcd.c:39:6:LCD_lcd_kick	1
+../Stm32_F103C6_Drivers/lcd.c:47:6:LCD_INIT	1
+../Stm32_F103C6_Drivers/lcd.c:60:6:LCD_clear_screen	1
+../Stm32_F103C6_Drivers/lcd.c:66:6:LCD_WRITE_COMMAND	1
+../Stm32_F103C6_Drivers/lcd.c:75:6:LCD_WRITE_CHAR	1
+../Stm32_F103C6_Drivers/lcd.c:84:6:LCD_WRITE_STRING	2
+../Stm32_F103C6_Drivers/lcd.c:92:6:LCD_GOTO_XY	3

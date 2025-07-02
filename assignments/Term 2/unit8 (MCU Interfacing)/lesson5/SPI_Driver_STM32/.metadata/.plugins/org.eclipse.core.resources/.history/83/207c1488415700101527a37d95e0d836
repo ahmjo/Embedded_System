@@ -1,0 +1,137 @@
+#define MCU_Act_as_Master
+//#define MCU_Act_as_Slave
+
+
+
+//Includes
+#include "stm32f103x6.h"
+#include "Stm32_F103C6_gpio_driver.h"
+#include "Stm32_F103C6_USART_driver.h"
+#include "Stm32_F103C6_EXTI_driver.h"
+#include "Stm32_F103C6_RCC_driver.h"
+#include "Stm32_F103C6_SPI_driver.h"
+
+
+
+uint16_t   ch;
+
+void UART_IRQ_CallBack()
+{
+#ifdef MCU_Act_as_Master
+	MCAL_UART_ReceiveData(USART1, &ch, disable);
+	MCAL_UART_SendData(USART1, &ch, enable);
+	//Send to SPI
+	MCAL_GPIO_WRITE_Pin(GPIOA, GPIO_PIN_4, 0);
+	MCAL_SPI_Tx_Rx(SPI1, &ch, PollingEnable);
+	MCAL_GPIO_WRITE_Pin(GPIOA, GPIO_PIN_4, 1);
+#endif
+}
+
+
+
+int main(void)
+{
+	// 1. تهيئة الـ SPI1 pins
+	MCAL_SPI_GPIO_Set_Pins(SPI1);
+
+	// 2. إعدادات SPI1
+	SPI_Config_t SPI1_Config;
+
+	SPI1_Config.Device_Mode = SPI_Device_Mode_MASTER;
+	SPI1_Config.Communication_Mode = SPI_DIRECTION_2LINES;
+	SPI1_Config.Frame_format = SPI_Frame_Format_MSB;
+	SPI1_Config.DataSize = SPI_DataSize_8BIT;
+	SPI1_Config.CLKPolarity = SPI_CLKPolarity_LOW_When_Idle;
+	SPI1_Config.CLKPhase = SPI_CLKPhase_1EDGE;
+	SPI1_Config.NSS = SPI_NSS_HW_Master_SS_OP_Disable; // حسب حاجتك ممكن تغيرها
+	SPI1_Config.SPI_BandRatePrescaler = SPI_BandRatePrescaler_16;
+	SPI1_Config.IRQ_Enable = SPI_IRQ_Enable_NONE;
+
+	// 3. تهيئة SPI1 بالاعدادات
+	MCAL_SPI_Init(SPI1, &SPI1_Config);
+
+	// 4. اللوب الرئيسي يبعث حرف 'l' بشكل مستمر
+	while(1)
+	{
+		uint16_t data = 'l'; // نرسل حرف l
+
+		// ارسال الحرف مع تمكين الـ polling
+		MCAL_SPI_SendData(SPI1, &data, PollingEnable);
+
+		// تأخير بسيط لو حابب (اختياري)
+		for(volatile int i = 0; i < 100000; i++);
+	}
+
+	return 0;
+}
+//
+//int main(void)
+//{
+//	//enable Clock
+//	RCC_GPIOA_CLK_EN();
+//	RCC_GPIOB_CLK_EN();
+//	RCC_GPIOC_CLK_EN();
+//	RCC_AFIO_CLK_EN();
+//
+//
+//	//==========================UART Init============================
+//	//PA9 TX
+//	//PA10 RX
+//	//PA11 CTS
+//	//PA12 RTS
+//	UART_Config_t uartCFG;
+//	uartCFG.BaudRate = UART_BaudRate_115200;
+//	uartCFG.HwFlow_CTL = UART_HwFlow_CTL_NONE;
+//	uartCFG.IRQ_Enable = UART_IRQ_Enable_RXNEIE;
+//	uartCFG.P_IRQ_CallBack = UART_IRQ_CallBack;
+//	uartCFG.Payload_Length = UART_Payload_Length_8B;
+//	uartCFG.StopBits = UART_StopBits_1;
+//	uartCFG.USART_Mode = UART_Mode_TX_RX;
+//	uartCFG.parity = UART_parity_NONE;
+//
+//	MCAL_UART_Init(USART1, &uartCFG);
+//	MCAL_UART_GPIO_Set_Pins(USART1);
+//
+//	//==========================SPI Init============================
+//	// PA4  : SPI1_NSS
+//	// PA5  : SPI1_SCK
+//	// PA6  : SPI1_MISO
+//	// PA7  : SPI1_MOSI
+//	SPI_Config_t SPI1CFG;
+//
+//	//Common configuration
+//	SPI1CFG.CLKPhase = SPI_CLKPhase_2EDGE;
+//	SPI1CFG.CLKPolarity = SPI_CLKPolarity_HIGH_When_Idle;
+//	SPI1CFG.DataSize = SPI_DataSize_8BIT;
+//	SPI1CFG.Frame_format = SPI_Frame_Format_MSB;
+//	//Assume by default pclk2 = 8MHZ
+//	SPI1CFG.SPI_BandRatePrescaler = SPI_BandRatePrescaler_8;
+//	SPI1CFG.Communication_Mode = SPI_DIRECTION_2LINES;
+//
+//#ifdef MCU_Act_as_Master
+//	SPI1CFG.Device_Mode = SPI_Device_Mode_MASTER;
+//	SPI1CFG.IRQ_Enable = SPI_IRQ_Enable_NONE;
+//	SPI1CFG.NSS = SPI_NSS_SW_NSSInternalSW_set;
+//	SPI1CFG.P_IRQ_CallBack = NULL;
+//#endif
+//
+//	MCAL_SPI_Init(SPI1, &SPI1CFG);
+//	MCAL_SPI_GPIO_Set_Pins(SPI1);
+//
+//	//Configure SS on PortA Pin4 by GPIO
+//	GPIO_Config_t PinCFG;
+//	PinCFG.GPIO_PinNumber = GPIO_PIN_4;
+//	PinCFG.GPIO_PinMode = GPIO_MODE_OUTPUT_PP;
+//	PinCFG.GPIO_PinSpeed = GPIO_SPEED_10MHz;
+//	MCAL_GPIO_Init(GPIOA, &PinCFG);
+//	//Force the SS (High) Idle Node
+//	MCAL_GPIO_WRITE_Pin(GPIOA, GPIO_PIN_4, 1);
+//
+//
+//
+//	//loop forever
+//	while(1)
+//	{
+//
+//	}
+//}

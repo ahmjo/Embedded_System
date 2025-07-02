@@ -1,0 +1,64 @@
+#include "stm32f103x6.h"
+#include "Stm32_F103C6_gpio_driver.h"
+#include "Stm32_F103C6_SPI_driver.h"
+#include "Stm32_F103C6_RCC_driver.h"
+
+int main(void)
+{
+    // تفعيل Clock للبورت A و SPI1
+    RCC_GPIOA_CLK_EN();
+    RCC_SPI1_CLK_EN();
+
+    // تهيئة SPI GPIO Pins (PA4: NSS, PA5: SCK, PA6: MISO, PA7: MOSI)
+    GPIO_Config_t PinCfg;
+
+    // PA4 NSS
+    PinCfg.GPIO_PinNumber = GPIO_PIN_4;
+    PinCfg.GPIO_PinMode = GPIO_MODE_OUTPUT_PP;
+    PinCfg.GPIO_PinSpeed = GPIO_SPEED_10MHz;
+    MCAL_GPIO_Init(GPIOA, &PinCfg);
+    MCAL_GPIO_WRITE_Pin(GPIOA, GPIO_PIN_4, 1); // NSS High idle
+
+    // PA5 SCK
+    PinCfg.GPIO_PinNumber = GPIO_PIN_5;
+    PinCfg.GPIO_PinMode = GPIO_MODE_OUTPUT_AF_PP;
+    PinCfg.GPIO_PinSpeed = GPIO_SPEED_10MHz;
+    MCAL_GPIO_Init(GPIOA, &PinCfg);
+
+    // PA6 MISO
+    PinCfg.GPIO_PinNumber = GPIO_PIN_6;
+    PinCfg.GPIO_PinMode = GPIO_MODE_INPUT_FLO;
+    MCAL_GPIO_Init(GPIOA, &PinCfg);
+
+    // PA7 MOSI
+    PinCfg.GPIO_PinNumber = GPIO_PIN_7;
+    PinCfg.GPIO_PinMode = GPIO_MODE_OUTPUT_AF_PP;
+    PinCfg.GPIO_PinSpeed = GPIO_SPEED_10MHz;
+    MCAL_GPIO_Init(GPIOA, &PinCfg);
+
+    // إعداد SPI
+    SPI_Config_t SPI1CFG;
+    SPI1CFG.Device_Mode = SPI_Device_Mode_MASTER;
+    SPI1CFG.Communication_Mode = SPI_DIRECTION_2LINES;
+    SPI1CFG.SPI_BandRatePrescaler = SPI_BandRatePrescaler_8;
+    SPI1CFG.CLKPolarity = SPI_CLKPolarity_LOW_When_Idle;
+    SPI1CFG.CLKPhase = SPI_CLKPhase_1EDGE;
+    SPI1CFG.DataSize = SPI_DataSize_8BIT;
+    SPI1CFG.Frame_format = SPI_Frame_Format_MSB;
+    SPI1CFG.NSS = SPI_NSS_SW_NSSInternalSW_set;
+    SPI1CFG.IRQ_Enable = SPI_IRQ_Enable_NONE;
+    SPI1CFG.P_IRQ_CallBack = NULL;
+
+    MCAL_SPI_Init(SPI1, &SPI1CFG);
+
+    uint8_t data = 'l';
+
+    while(1)
+    {
+        MCAL_GPIO_WRITE_Pin(GPIOA, GPIO_PIN_4, 0); // NSS Low - Start transmission
+        MCAL_SPI_Tx_Rx(SPI1, &data, enable);
+        MCAL_GPIO_WRITE_Pin(GPIOA, GPIO_PIN_4, 1); // NSS High - End transmission
+
+        for (volatile int i = 0; i < 100000; i++); // تأخير بسيط
+    }
+}

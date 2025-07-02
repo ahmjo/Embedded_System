@@ -1,0 +1,43 @@
+#include "stm32f103x6.h"
+#include "Stm32_F103C6_gpio_driver.h"
+#include "Stm32_F103C6_USART_driver.h"
+#include "Stm32_F103C6_RCC_driver.h"
+
+uint16_t ch;
+
+void UART_IRQ_Callback(void)
+{
+	// Receive data
+	MCAL_UART_ReceiveData(USART1, &ch, disable);
+	// Send the same data back (echo)
+	MCAL_UART_SendData(USART1, &ch, enable);
+}
+
+int main(void)
+{
+	// Enable needed clocks
+	RCC_GPIOA_CLK_EN();
+	RCC_AFIO_CLK_EN();
+
+	// UART Configuration
+	UART_Config_t uartCFG;
+	uartCFG.BaudRate = UART_BaudRate_115200;
+	uartCFG.HwFlow_CTL = UART_HwFlow_CTL_NONE;
+	uartCFG.IRQ_Enable = UART_IRQ_Enable_RXNEIE;
+	uartCFG.P_IRQ_CallBack = UART_IRQ_Callback;
+	uartCFG.Payload_Length = UART_Payload_Length_8B;
+	uartCFG.StopBits = UART_StopBits_1;
+	uartCFG.USART_Mode = UART_Mode_TX_RX;
+	uartCFG.parity = UART_parity_NONE;
+
+	MCAL_UART_Init(USART1, &uartCFG);
+	MCAL_UART_GPIO_Set_Pins(USART1);
+
+	// Enable USART1 interrupt in NVIC
+
+	// Infinite loop
+	while(1)
+	{
+		// main loop empty, everything done via interrupt
+	}
+}

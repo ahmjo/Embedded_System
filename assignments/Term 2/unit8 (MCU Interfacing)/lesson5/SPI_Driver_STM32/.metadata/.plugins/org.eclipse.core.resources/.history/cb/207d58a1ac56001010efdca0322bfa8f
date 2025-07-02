@@ -1,0 +1,89 @@
+#define MCU_Act_as_Master
+//#define MCU_Act_as_Slave
+
+//Includes
+#include "stm32f103x6.h"
+#include "Stm32_F103C6_gpio_driver.h"
+#include "Stm32_F103C6_USART_driver.h"
+#include "Stm32_F103C6_EXTI_driver.h"
+#include "Stm32_F103C6_RCC_driver.h"
+#include "Stm32_F103C6_SPI_driver.h"
+
+uint16_t ch;
+
+void UART_IRQ_CallBack()
+{
+#ifdef MCU_Act_as_Master
+    // استقبال البيانات من UART بدون انتظار (Polling disabled لان IRQ شغال)
+	MCAL_UART_ReceiveData(USART1, &ch, disable);
+
+	// إرسال البيانات التي تم استقبالها مرة أخرى عبر UART مع انتظار انتهاء الإرسال (Polling enabled)
+	MCAL_UART_SendData(USART1, &ch, enable);
+
+	// إرسال البيانات عبر SPI بعد تفعيل الـ NSS (Active low)
+	MCAL_GPIO_WRITE_Pin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET); // NSS = 0 (Start communication)
+	MCAL_SPI_Tx_Rx(SPI1, &ch, enable);                      // إرسال واستقبال SPI
+	MCAL_GPIO_WRITE_Pin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);   // NSS = 1 (End communication)
+#endif
+}
+
+int main(void)
+{
+	// تفعيل الساعة للبورتات المطلوبة
+	RCC_GPIOA_CLK_EN();
+	RCC_GPIOB_CLK_EN();
+	RCC_GPIOC_CLK_EN();
+	RCC_AFIO_CLK_EN();
+
+	//========================== UART Init ============================
+	UART_Config_t uartCFG;
+	uartCFG.BaudRate = UART_BaudRate_115200;
+	uartCFG.HwFlow_CTL = UART_HwFlow_CTL_NONE;
+	uartCFG.IRQ_Enable = UART_IRQ_Enable_RXNEIE;   // تفعيل IRQ استقبال البيانات
+	uartCFG.P_IRQ_CallBack = UART_IRQ_CallBack;    // تابع الـ IRQ
+	uartCFG.Payload_Length = UART_Payload_Length_8B;
+	uartCFG.StopBits = UART_StopBits_1;
+	uartCFG.USART_Mode = UART_Mode_TX_RX;
+	uartCFG.parity = UART_parity_NONE;
+
+	MCAL_UART_Init(USART1, &uartCFG);
+	MCAL_UART_GPIO_Set_Pins(USART1);
+
+	//========================== SPI Init ============================
+	SPI_Config_t SPI1CFG;
+
+	// الإعدادات الشائعة
+	SPI1CFG.CLKPhase = SPI_CLKPhase_2EDGE;
+	SPI1CFG.CLKPolarity = SPI_CLKPolarity_HIGH_When_Idle;
+	SPI1CFG.DataSize = SPI_DataSize_8BIT;
+	SPI1CFG.Frame_format = SPI_Frame_Format_MSB;
+	SPI1CFG.SPI_BandRatePrescaler = SPI_BandRatePrescaler_8;
+	SPI1CFG.Communication_Mode = SPI_DIRECTION_2LINES;
+
+#ifdef MCU_Act_as_Master
+	SPI1CFG.Device_Mode = SPI_Device_Mode_MASTER;
+	SPI1CFG.IRQ_Enable = SPI_IRQ_Enable_NONE;
+	SPI1CFG.NSS = SPI_NSS_SW_NSSInternalSW_set;
+	SPI1CFG.P_IRQ_CallBack = NULL;
+#endif
+
+	MCAL_SPI_Init(SPI1, &SPI1CFG);
+	MCAL_SPI_GPIO_Set_Pins(SPI1);
+
+	// إعداد دبوس الـ NSS (SS) كـ GPIO Output Push Pull على PA4
+	GPIO_Config_t PinCFG;
+	PinCFG.GPIO_PinNumber = GPIO_PIN_4;
+	PinCFG.GPIO_PinMode = GPIO_MODE_OUTPUT_PP;
+	PinCFG.GPIO_PinSpeed = GPIO_SPEED_10MHz;
+	MCAL_GPIO_Init(GPIOA, &PinCFG);
+
+	// جعل الـ NSS في حالة High (Idle)
+	MCAL_GPIO_WRITE_Pin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
+
+	while(1)
+	{
+		// مع IRQ، ما فيش حاجة محتاج تعملها هنا
+	}
+
+	return 0;
+}

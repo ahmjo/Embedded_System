@@ -1,0 +1,238 @@
+#include "STM32_F103C6_USART_Driver.h"
+
+// متغيرات تخزين الإعدادات لكل UART (لتسهيل استخدام Callback وغيره)
+UART_Config_t* GL_UART_Config[3] = {0};
+
+//----------------------------------------------
+void MCAL_UART_Init(USART_t* USARTx, UART_Config_t* UART_Config)
+{
+    uint32_t PCLK;
+    uint32_t BRR;
+
+    // Enable Clock for USART Peripheral
+    if (USARTx == USART1)
+    {
+        GL_UART_Config[0] = UART_Config;
+        RCC_USART1_CLK_EN();
+    }
+    else if (USARTx == USART2)
+    {
+        GL_UART_Config[1] = UART_Config;
+        RCC_USART2_CLK_EN();
+    }
+    else if (USARTx == USART3)
+    {
+        GL_UART_Config[2] = UART_Config;
+        RCC_USART3_CLK_EN();
+    }
+
+    // Enable USART (UE bit)
+    SET_BIT(USARTx->CR1, 13);
+
+    // Configure USART Mode (TX/RX)
+    USARTx->CR1 |= UART_Config->USART_Mode;
+
+    // Configure Payload length
+    USARTx->CR1 |= UART_Config->Payload_Length;
+
+    // Configure Parity
+    USARTx->CR1 |= UART_Config->parity;
+
+    // Configure Stop Bits
+    USARTx->CR2 |= UART_Config->StopBits;
+
+    // Configure HW Flow Control
+    USARTx->CR3 |= UART_Config->HwFlow_CTL;
+
+    // Baud Rate Calculation
+    if (USARTx == USART1)
+    {
+        PCLK = MCAL_RCC_GET_PCLK2();
+    }
+    else
+    {
+        PCLK = MCAL_RCC_GET_PCLK1();
+    }
+
+    BRR = UART_BRR_Register(PCLK, UART_Config->BaudRate);
+    USARTx->BRR = BRR;
+
+    // Enable IRQ if required
+    if (UART_Config->IRQ_Enable != UART_IRQ_Enable_NONE)
+    {
+        USARTx->CR1 |= UART_Config->IRQ_Enable;
+
+        if (USARTx == USART1)
+        {
+            NVIC_IRQ37_USART1_EN;
+        }
+        else if (USARTx == USART2)
+        {
+            NVIC_IRQ38_USART2_EN;
+        }
+        else if (USARTx == USART3)
+        {
+            NVIC_IRQ39_USART3_EN;
+        }
+    }
+}
+
+//----------------------------------------------
+void MCAL_UART_DeInit(USART_t* USARTx)
+{
+    if (USARTx == USART1)
+    {
+        RCC_USART1_Reset();
+        NVIC_IRQ37_USART1_Disable;
+    }
+    else if (USARTx == USART2)
+    {
+        RCC_USART2_Reset();
+        NVIC_IRQ38_USART2_Disable;
+    }
+    else if (USARTx == USART3)
+    {
+        RCC_USART3_Reset();
+        NVIC_IRQ39_USART3_Disable;
+    }
+}
+
+//----------------------------------------------
+void MCAL_UART_GPIO_Set_Pins(USART_t* USARTx)
+{
+    GPIO_PinConfig_t PinCfg;
+
+    if (USARTx == USART1)
+    {
+        // PA9 TX
+        PinCfg.GPIO_PinNumber = GPIO_PIN_9;
+        PinCfg.GPIO_MODE = GPIO_MODE_OUTPUT_AF_PP;
+        PinCfg.GPIO_Output_Speed = GPIO_Output_Speed_10M;
+        MCAL_GPIO_Init(GPIOA, &PinCfg);
+
+        // PA10 RX
+        PinCfg.GPIO_PinNumber = GPIO_PIN_10;
+        PinCfg.GPIO_MODE = GPIO_MODE_INPUT_FLO;
+        MCAL_GPIO_Init(GPIOA, &PinCfg);
+
+        // CTS and RTS pins if used
+        if (GL_UART_Config[0]->HwFlow_CTL & UART_HwFlow_CTL_CTS)
+        {
+            PinCfg.GPIO_PinNumber = GPIO_PIN_11;
+            PinCfg.GPIO_MODE = GPIO_MODE_INPUT_FLO;
+            MCAL_GPIO_Init(GPIOA, &PinCfg);
+        }
+
+        if (GL_UART_Config[0]->HwFlow_CTL & UART_HwFlow_CTL_RTS)
+        {
+            PinCfg.GPIO_PinNumber = GPIO_PIN_12;
+            PinCfg.GPIO_MODE = GPIO_MODE_OUTPUT_AF_PP;
+            PinCfg.GPIO_Output_Speed = GPIO_Output_Speed_10M;
+            MCAL_GPIO_Init(GPIOA, &PinCfg);
+        }
+    }
+    // نفس الفكرة لباقي USART2, USART3 مع البورتات المختلفة (PA2, PA3, PB10, PB11)
+    // لو تحب أظبطلك الباقي قول لي
+}
+
+//----------------------------------------------
+void MCAL_UART_SendData(USART_t* USARTx, uint16_t* pTxBuffer, enum Polling_mechism PollingEn)
+{
+    if (PollingEn == enable)
+    {
+        while (!(USARTx->SR & (1 << 7)));  // TXE flag
+    }
+
+    if (USARTx == USART1)
+    {
+        if (GL_UART_Config[0]->Payload_Length == UART_Payload_Length_9B)
+        {
+            USARTx->DR = (*pTxBuffer & (uint16_t)0x01FF);
+        }
+        else
+        {
+            USARTx->DR = (*pTxBuffer & (uint16_t)0xFF);
+        }
+    }
+    else if (USARTx == USART2)
+    {
+        if (GL_UART_Config[1]->Payload_Length == UART_Payload_Length_9B)
+        {
+            USARTx->DR = (*pTxBuffer & (uint16_t)0x01FF);
+        }
+        else
+        {
+            USARTx->DR = (*pTxBuffer & (uint16_t)0xFF);
+        }
+    }
+    else if (USARTx == USART3)
+    {
+        if (GL_UART_Config[2]->Payload_Length == UART_Payload_Length_9B)
+        {
+            USARTx->DR = (*pTxBuffer & (uint16_t)0x01FF);
+        }
+        else
+        {
+            USARTx->DR = (*pTxBuffer & (uint16_t)0xFF);
+        }
+    }
+}
+
+//----------------------------------------------
+void MCAL_UART_ReceiveData(USART_t* USARTx, uint16_t* pRxBuffer, enum Polling_mechism PollingEn)
+{
+    if (PollingEn == enable)
+    {
+        while (!(USARTx->SR & (1 << 5)));  // RXNE flag
+    }
+
+    if (USARTx == USART1)
+    {
+        if (GL_UART_Config[0]->Payload_Length == UART_Payload_Length_9B)
+        {
+            if (GL_UART_Config[0]->parity == UART_parity_NONE)
+            {
+                *pRxBuffer = USARTx->DR;
+            }
+            else
+            {
+                *pRxBuffer = (USARTx->DR & (uint8_t)0xFF);
+            }
+        }
+        else
+        {
+            if (GL_UART_Config[0]->parity == UART_parity_NONE)
+            {
+                *pRxBuffer = (USARTx->DR & (uint8_t)0xFF);
+            }
+            else
+            {
+                *pRxBuffer = (USARTx->DR & (uint8_t)0x7F);
+            }
+        }
+    }
+    // نفس الفكرة لباقي USART2, USART3
+}
+
+//----------------------------------------------
+void MCAL_UART_WAIT_TC(USART_t* USARTx)
+{
+    while (!(USARTx->SR & (1 << 6))); // TC flag
+}
+
+//----------------------------------------------
+void USART1_IRQHandler(void)
+{
+    if (GL_UART_Config[0] && GL_UART_Config[0]->P_IRQ_CallBack)
+        GL_UART_Config[0]->P_IRQ_CallBack();
+}
+void USART2_IRQHandler(void)
+{
+    if (GL_UART_Config[1] && GL_UART_Config[1]->P_IRQ_CallBack)
+        GL_UART_Config[1]->P_IRQ_CallBack();
+}
+void USART3_IRQHandler(void)
+{
+    if (GL_UART_Config[2] && GL_UART_Config[2]->P_IRQ_CallBack)
+        GL_UART_Config[2]->P_IRQ_CallBack();
+}

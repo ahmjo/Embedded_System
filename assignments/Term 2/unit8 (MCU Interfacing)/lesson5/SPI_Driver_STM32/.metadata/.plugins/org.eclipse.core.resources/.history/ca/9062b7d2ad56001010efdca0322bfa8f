@@ -1,0 +1,46 @@
+#include "stm32f103x6.h"
+#include "Stm32_F103C6_gpio_driver.h"
+#include "Stm32_F103C6_USART_driver.h"
+#include "Stm32_F103C6_RCC_driver.h"
+
+int main(void)
+{
+    // تفعيل Clock للبورت A و USART1
+    RCC_GPIOA_CLK_EN();
+    RCC_USART1_CLK_EN();
+
+    // تهيئة UART GPIO Pins
+    GPIO_Config_t PinCfg;
+
+    // PA9 TX
+    PinCfg.GPIO_PinNumber = GPIO_PIN_9;
+    PinCfg.GPIO_PinMode = GPIO_MODE_OUTPUT_AF_PP;
+    PinCfg.GPIO_PinSpeed = GPIO_SPEED_10MHz;
+    MCAL_GPIO_Init(GPIOA, &PinCfg);
+
+    // PA10 RX
+    PinCfg.GPIO_PinNumber = GPIO_PIN_10;
+    PinCfg.GPIO_PinMode = GPIO_MODE_INPUT_FLO;
+    MCAL_GPIO_Init(GPIOA, &PinCfg);
+
+    // إعداد UART
+    UART_Config_t uartCFG;
+    uartCFG.BaudRate = UART_BaudRate_115200;
+    uartCFG.HwFlow_CTL = UART_HwFlow_CTL_NONE;
+    uartCFG.IRQ_Enable = UART_IRQ_Enable_NONE;
+    uartCFG.P_IRQ_CallBack = NULL;
+    uartCFG.Payload_Length = UART_Payload_Length_8B;
+    uartCFG.StopBits = UART_StopBits_1;
+    uartCFG.USART_Mode = UART_Mode_TX;
+    uartCFG.parity = UART_parity_NONE;
+
+    MCAL_UART_Init(USART1, &uartCFG);
+
+    uint16_t data = 'l';
+
+    while(1)
+    {
+        MCAL_UART_SendData(USART1, &data, enable);
+        for (volatile int i = 0; i < 100000; i++); // تأخير بسيط
+    }
+}
